@@ -1,0 +1,32 @@
+Starting Ros container:
+jetson@jetson-desktop:~$ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+jetson@jetson-desktop:~$ docker run -it ros:melodic
+root@e91276ae5fe5:/# roscore
+
+
+
+
+Starting a second instance of ROS contianer becasu first one is running roscore
+docker ps -l
+docker exec -it vibrant_hypatia bash
+source ros_entrypoint.sh
+mkdir -p ~/catkin_ws/src
+root@e91276ae5fe5:~# source /opt/ros/melodic/setup.bash
+root@e91276ae5fe5:~# cd catkin_ws/
+root@e91276ae5fe5:~/catkin_ws# catkin_make
+root@e91276ae5fe5:~/catkin_ws# source devel/setup.bash
+root@e91276ae5fe5:~/catkin_ws# rostopic list
+
+
+copy rec.py to ros contianer:
+docker cp rec_ros.py e91276ae5fe5:/home
+
+check ip of docker container:
+docker inspect e91276ae5fe5 | grep IPAddress
+
+start Jetson container:
+docker/run.sh --volume ~/my_detect:/my-detect
+cd .. 
+cd my_detect
+python rossendtest.py
