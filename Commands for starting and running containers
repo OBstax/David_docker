@@ -1,7 +1,7 @@
 Starting Ros container:
 jetson@jetson-desktop:~$ docker ps
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
-jetson@jetson-desktop:~$ docker run -it ros:melodic
+jetson@jetson-desktop:~$ docker run --network=host -it ros:melodic
 root@e91276ae5fe5:/# roscore
 
 
